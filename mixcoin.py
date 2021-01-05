@@ -2,10 +2,7 @@ import json
 import hashlib
 from datetime import datetime
 
-
-
-
-
+from mixlib import *
 
 
 class Block():
@@ -57,6 +54,7 @@ class Blockchain(object):
 
 		if self.is_valid(new_block):
 			self.chain.append(new_block)
+			return new_block
 		else:
 			print('ERROR: Block is invalid!')
 
@@ -73,20 +71,68 @@ class Blockchain(object):
 			
 			
 
+def start():
+	print(banner_maker(sc_name="Mixcoin",description="Example for blockchain system.",author="Onur Atakan ULUSOY",email="atadogan06@gmail.com"))
+	printcentertext(text="WELCOME,The Blockchain is created.")
 
+
+ 
+ 
+ 
+def add_block():
+	data = str(question_maker(question_text="Enter data for block : "))
+	block = chain.add_block(data)
+	print("*** Block: "+ '{}  {}'.format(block.index, block.real_time()) +" ***")
+	print("\nBlock Data: "+block.data)
+	print("\nBlock Hash: "+block.hash)
+	print("\nPrevios Block Hash: "+block.previous_hash)
+	print("-------------------")
+ 
+def print_chain():
+	thechain = ""
+	for block in chain.chain:
+		thechain += block.hash
+	print("\nAll Block is: "+thechain+"\n")
+	
+	
+def print_blocks():
+	chain.print_blockchain()
+	
+	
+def show_menu():
+	print(menu_space() + \
+	  menu_maker(menu_number="add",menu_text="Adding block")+ \
+	   menu_space() + \
+	   menu_maker(menu_number="chain",menu_text="Showing the chain")+ \
+	   menu_maker(menu_number="blocks",menu_text="Showing the all block")+ \
+	   menu_space() + \
+	   menu_maker(menu_number="help",menu_text="Showing the this menu")+ \
+	  quit_menu_maker(mode="main")
+	)
+ 
+def menu(mode):
+	if mode == "showmenu":
+		show_menu()
+	
+	while True:
+	 choices_input = question_maker(mode="main")
+	
+	 if choices_input == "add":
+		 add_block()
+	 if choices_input == "chain":
+		 print_chain()
+	 if choices_input == "blocks":
+		 print_blocks()		
+	 if choices_input == "help":
+		 show_menu()
+	 
+	 if choices_input == "0":
+		 exit() 
+		
+		
+		
+		
+		
 chain = Blockchain()
-while True:		
-
- n = int(input('Enter the number of blocks to be created: '))
-
- for x in range(n):
- 	 data = str(input('Enter data for block {}: '.format(x+1)))
- 	 chain.add_block(data)
-
- chain.print_blockchain()
- 
- thechain = ""
- for block in chain.chain:
-	 thechain += block.hash
- 
- print("All Block is: "+thechain)
+start()
+menu("showmenu")
