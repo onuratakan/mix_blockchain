@@ -1,2 +1,2 @@
-# mix blockchain
+# Mix Blockchain | [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/onuratakan/mix_blockchain) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/onuratakan/mix_blockchain/blob/master/LICENSE)
 ![mix_blockchain](https://repository-images.githubusercontent.com/327011401/19648180-59b2-11eb-8c8a-da82d30da958)
